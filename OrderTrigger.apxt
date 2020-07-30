@@ -1,13 +1,3 @@
-/**
- * @name orderTrigger
- * @description
-**/
 trigger orderTrigger on Order (after update) {
-    public Set<Id> orderIds = new Set<Id>();
-    if(Trigger.new != null){
-    	orderIds = OrderHelper.AfterUpdate(Trigger.new, Trigger.old);    
-    }
-    
-    OrderHelper.RollUpOrderItems(orderIds);
-    
-} 
+    OrderHelper.AfterUpdate(Trigger.New, Trigger.Old);
+}
